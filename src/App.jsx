@@ -7,6 +7,9 @@ import { sounds } from './utils/sounds'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// GitHub Pages base URL fix: all /images/ and /docs/ paths must be prefixed
+const imgUrl = (path) => import.meta.env.BASE_URL + path.replace(/^\//, '')
+
 /* ==============================
    DATA
    ============================== */
@@ -16,9 +19,9 @@ const timelineEvents = [
     description: 'Demokrasinin doğduğu yer! "Demokrasi" kelimesi Yunanca "Demos" (Halk) ve "Kratos" (İktidar/Güç) kelimelerinin birleşiminden (Halkın Gücü) gelir. Kent Devleti’nin yönetiminde Beş Yüzler Meclisinin önemli bir rolü vardı.',
     extraInfoTitle: 'Sürpriz Yaklaşım: Demokrasi ve God of War 🎮',
     extraInfo: [
-      { text: 'Hazır konu "Kratos" kelimesinden açılmışken... Aranızda meşhur "God of War" oyununu oynayan var mı? Ana karakterin adı Kratos\'tur! Yunan mitolojisinde güç ve kudretin sembolüdür. Oyun yapımcıları bu ismi tesadüfen seçmemiş; Kratos devasa yaratıkları alt ederken aslında Demokrasinin son hecesi olan pür "Güç" kavramını temsil ediyor! 💪', image: '/images/kratos.webp' }
+      { text: 'Hazır konu "Kratos" kelimesinden açılmışken... Aranızda meşhur "God of War" oyununu oynayan var mı? Ana karakterin adı Kratos\'tur! Yunan mitolojisinde güç ve kudretin sembolüdür. Oyun yapımcıları bu ismi tesadüfen seçmemiş; Kratos devasa yaratıkları alt ederken aslında Demokrasinin son hecesi olan pür "Güç" kavramını temsil ediyor! 💪', image: imgUrl('/images/kratos.webp') }
     ],
-    image: '/images/athens.png',
+    image: imgUrl('/images/athens.png'),
   },
   {
     year: 'MÖ ~500', title: 'Antik Roma Cumhuriyeti', icon: '⚔️',
@@ -28,21 +31,21 @@ const timelineEvents = [
       { text: 'Konsül: Roma Cumhuriyeti\'nde devleti yöneten ve orduya komuta eden en üst düzey iki yöneticiden her biri.' },
       { text: 'Senato: Roma\'da yaşlılar meclisi; devletin dış politika ve maliyesini yönlendiren en üst düzey kurul.' }
     ],
-    image: '/images/rome.png',
+    image: imgUrl('/images/rome.png'),
   },
   {
     year: '1215', title: 'Magna Charta', icon: '📜',
     description: 'Büyük Ferman anlamına gelir. İngiltere\'de Kral John, soyluların isyanı ve zorlaması sonucu Magna Charta\'yı imzaladı. Böylece kralın sonsuz yetkileri ilk defa yazılı bir belgeyle yasal bir çerçeveye oturtulup sınırlandırıldı.',
     question: 'Kral neden bunu imzaladı, problem neydi?',
     questionAnswer: 'XIII. yüzyılın başlarında İngiliz Kralı John ile İngiliz soylu sınıfı arasında gerginlik ortaya çıktı. Bu gerginlik Kral John\'un ek vergi çıkarmasıyla birlikte çatışmaya dönüştü. Soylular, Londra başta olmak üzere İngiltere\'nin bazı önemli şehirlerini işgal etti. Bunun üzerine Kral John ve papa, soylularla 63 maddeden oluşan Magna Carta\'yı imzaladı.',
-    image: '/images/magna_carta.png',
+    image: imgUrl('/images/magna_carta.png'),
   },
   {
     year: '1776', title: 'Amerikan Bağımsızlık Bildirgesi', icon: '🗽',
     description: '13 İngiliz kolonisi bağımsızlığını ilan etti ve ABD kuruldu. Anayasa’da aydınlanma felsefesi etkiliydi. Yasama gücü iki ayrı meclise, yürütme gücü başkana, yargı gücü ise yüksek mahkemeye verildi. Meclis üyeleri ve başkan, seçimle belirlenmeye başlandı. Bu durum ABD’de günümüzde de devam etmektedir.',
     question: 'Sizce ABD’de yasama, yürütme ve yargının farklı organlara verilme sebebi nedir?',
     questionAnswer: 'Güçlerin tek bir elde toplanması, tarihte pek çok kez baskı ve tiranlığa yol açmıştır. Farklı organlara dağıtılarak her birinin diğerini denetlemesi (denge-denetim sistemi) amaçlanmıştır. Bu sayede hiçbir kişi ya da kurum mutlak güce sahip olamaz; özgürlük ve adalet korunmuş olur.',
-    image: '/images/usa.png',
+    image: imgUrl('/images/usa.png'),
   },
   {
     year: '1789', title: 'İnsan ve Yurttaş Hakları', icon: '🇫🇷',
@@ -54,12 +57,12 @@ const timelineEvents = [
       { text: '3. Her egemenliğin özü, esas itibarıyla millettedir.' },
       { text: '4. Hürriyet başkasına zarar vermeyen her şeyi yapabilmekten ibarettir.' }
     ],
-    image: '/images/france.png',
+    image: imgUrl('/images/france.png'),
   },
   {
     year: '1948', title: 'BM Evrensel Bildirgesi', icon: '🌍',
     description: 'BM, 10 Aralık 1948\'de İnsan Hakları Evrensel Bildirgesi\'ni kabul etti. İnsan Hakları Evrensel Bildirgesi ile dünyada ilk kez insan hak ve özgürlükleriyle ilgili bu kadar geniş katılımlı bir belge imzalanmış oldu. Bildirge\'de yaşama hakkı, düşünce ve ifade özgürlüğü; keyfi tutuklama, hapis ve sürgünden korunma hakkı; mülkiyet hakkı; dernek kurma, toplantı ve yürüyüş gibi siyasi hak ve özgürlükler yer almaktadır.',
-    image: '/images/un.png',
+    image: imgUrl('/images/un.png'),
   },
 ]
 
@@ -97,7 +100,7 @@ function ChestScene({ onEnter }) {
           onEnter();
         }}
       >
-        <img src="/images/chest.png" alt="Gizemli Sandık" className="w-full h-auto object-contain drop-shadow-2xl" />
+        <img src={imgUrl('/images/chest.png')} alt="Gizemli Sandık" className="w-full h-auto object-contain drop-shadow-2xl" />
       </div>
     </section>
   )
@@ -440,7 +443,7 @@ const salon2Events = [
   {
     chapter: 'Bölüm 1: Türklerde Demokrasi',
     year: 'M.S. ~200', title: 'Asya Hun Devleti — Kurultay', icon: '🏹',
-    image: '/images/hun_otagi.png',
+    image: imgUrl('/images/hun_otagi.png'),
     description: 'Türk tarihinde ilk demokratik uygulamalara Asya Hun Devleti\'nde rastlanmaktadır. Hükümdarın başkanlığında yılda iki kez devletin ileri gelenlerinin (toygun) katıldığı kurultay yapılırdı. Katılanlar görüşlerini özgürce dile getirirdi. Danışma meclisi niteliğindeki kurultaylar, devletin genel politikasına yön vermede hükümdara yardımcı olurdu.',
     question: 'Asya Hun Devleti\'ndeki kurultayın işleyişi ile demokrasi arasında nasıl bir ilişki kurulabilir?',
     questionAnswer: 'Kurultay, hükümdarın tek başına karar vermesi yerine devletin ileri gelenlerinin görüşünü alması anlamına geliyordu. Bu, mutlak monarşi anlayışına karşı kolektif bir danışma geleneğini temsil eder — modern demokrasilerde de kararlar çoğunluğun iradesine dayandırılır.',
@@ -448,19 +451,19 @@ const salon2Events = [
   {
     chapter: 'Bölüm 1: Türklerde Demokrasi',
     year: '~11–15. yy', title: 'Türk-İslam Devletleri — Divan', icon: '📋',
-    image: '/images/selcuklu_divan.png',
+    image: imgUrl('/images/selcuklu_divan.png'),
     description: 'Türk-İslam devletlerinde kurultay yerini divana bıraktı. Üst düzey yönetim organı olan divanda mali, idari ve askerî konular görüşülüp karara bağlanırdı. Alınan kararlar padişahın onayından sonra yürürlüğe girerdi. Osmanlı\'da sonraları divana vezir-i azam başkanlık etmeye başladı.',
   },
   {
     chapter: 'Bölüm 2: Osmanlı\'dan Meşrutiyete',
     year: '1808', title: 'Sened-i İttifak', icon: '🤝',
-    image: '/images/sened_ittifak_v2.png',
+    image: imgUrl('/images/sened_ittifak_v2.png'),
     description: 'Osmanlı Devleti\'nde paşalar ve ayanlar (yerel güçler) ile padişah arasında imzalanan bu belge, bazı tarihçiler tarafından ilk anayasal adım olarak kabul edilir. Padişahın yetkileri ilk kez bu belge ile kendi rızasıyla sınırlanmıştı.',
   },
   {
     chapter: 'Bölüm 2: Osmanlı\'dan Meşrutiyete',
     year: '1839', title: 'Tanzimat Fermanı', icon: '📜',
-    image: '/images/tanzimat_fermani.png',
+    image: imgUrl('/images/tanzimat_fermani.png'),
     description: 'Gülhane Parkı\'nda okunan bu fermanla devlet, hangi dinden olursa olsun tüm vatandaşlarının can ve mal güvenliğini garanti altına aldı. Hukukun üstünlüğüne doğru atılan en ciddi adımdı.',
     question: 'Peki Osmanlı neden durup dururken demokratikleşme hareketlerine girişti, rüyasında mı gördü, ne değişti? 😅',
     questionAnswer: 'Tabii ki rüyasında görmedi! 😊 Fransız İhtilali\'nin yaydığı milliyetçilik akımı imparatorluğu parçalamaya başlamıştı. Avrupalı devletler de azınlık haklarını bahane edip Osmanlı\'nın iç işlerine karışıyordu. Osmanlı devleti hem dağılmayı önlemek hem de Avrupa\'nın desteğini almak için "Bakın ben de modern ve eşitlikçi bir devletim" demek zorundaydı!',
@@ -468,7 +471,7 @@ const salon2Events = [
   {
     chapter: 'Bölüm 2: Osmanlı\'dan Meşrutiyete',
     year: '1876-1908', title: 'I. ve II. Meşrutiyet', icon: '🏛️',
-    image: '/images/ikinci_mesrutiyet.png',
+    image: imgUrl('/images/ikinci_mesrutiyet.png'),
     description: 'İlk anayasa (Kanun-i Esasi) yürürlüğe girdi ve halk ilk defa seçtiği temsilcilerle (Meclis-i Mebusan) yönetime katıldı. II. Meşrutiyet ile birlikte ise Türkiye\'de çok partili siyasal hayatın fiilen ilk adımları atılmış oldu.',
     question: 'Kanun-i Esasi\'nin demokrasi açısından zayıf tarafı neydi?',
     questionAnswer: 'Padişahın meclisi istediği zaman kapatma yetkisi vardı ve nitekim II. Abdülhamid meclisi 30 yıl boyunca kapalı tuttu. Kalıcı demokrasi için gücün şahıslardan tamamen kurumlara geçmesi gerekir.',
@@ -476,19 +479,19 @@ const salon2Events = [
   {
     chapter: 'Bölüm 3: Atatürk\'ün Katkıları',
     year: '1919', title: 'Amasya Genelgesi & Kongreler', icon: '📢',
-    image: '/images/ataturk_meclis.png',
+    image: imgUrl('/images/ataturk_meclis.png'),
     description: 'Mustafa Kemal Paşa\'nın millî egemenliğe ve meclise verdiği önemin sinyalleri Amasya Genelgesi, Erzurum ve Sivas kongrelerinde görülmektedir. Amasya Genelgesi\'nin "Milletin bağımsızlığını yine milletin azim ve kararı kurtaracaktır" maddesinde bu önem vurgulanmaktadır. Sivas Kongresi\'nin yurdun dört bir tarafından gelen milletin temsilcisi delegelerle yapılması bu amaca hizmet etmiştir. Alınan kararlar doğrultusunda İstanbul\'da Meclis-i Mebusan açılmıştır.',
   },
   {
     chapter: 'Bölüm 3: Atatürk\'ün Katkıları',
     year: '1920-1923', title: 'TBMM ve Cumhuriyet', icon: '🇹🇷',
-    image: '/images/ataturk_meclis.png',
+    image: imgUrl('/images/ataturk_meclis.png'),
     description: '"Egemenlik kayıtsız şartsız milletindir!" Mustafa Kemal Paşa\'nın önderliğinde kurulan meclis, halk iradesini devletin tek meşru kaynağı yaptı. Ve 29 Ekim 1923\'te Cumhuriyetin ilanıyla Türk demokrasisi taçlandı.',
   },
   {
     chapter: 'Bölüm 3: Atatürk\'ün Katkıları',
     year: '1930–1934', title: 'Kadınlara Seçme ve Seçilme Hakkı', icon: '👩',
-    image: '/images/kadin_haklari.png',
+    image: imgUrl('/images/kadin_haklari.png'),
     description: 'Türk kadını birçok gelişmiş Batı ülkesinden çok daha önce, kademeli olarak belediye (1930), muhtarlık (1933) ve milletvekilliği (1934) seçimlerinde oy kullanma ve aday olma hakkını kazandı.',
     question: 'Avrupa\'ya kıyasla bu hakkın erken verilmesi ne anlama geliyor?',
     questionAnswer: 'Fransa (1944) ve İsviçre (1971) gibi ülkelerden on yıllar önce kadınlara bu hakkın verilmesi, demokratikleşmenin sadece ekonomik gelişmişlikle değil, güçlü bir vizyon ve siyasi iradeyle ilgili olduğunu gösterir.',
@@ -502,7 +505,7 @@ const salon2Events = [
   {
     chapter: 'Bölüm 4: Milli İradenin Zaferi',
     year: '2016', title: '15 Temmuz Demokrasi Zaferi', icon: '🇹🇷',
-    image: '/images/15_temmuz_zaferi.png',
+    image: imgUrl('/images/15_temmuz_zaferi.png'),
     description: '15 Temmuz 2016\'da gerçekleştirilmeye çalışılan hain darbe girişimi, Türk halkının demokrasiye ve millî iradeye sahip çıkmasıyla engellenmiştir. Vatandaşlar tankların önüne geçerek egemenliğin yalnızca millete ait olduğunu tüm dünyaya bir kez daha kanıtlamıştır.',
   },
 ]
@@ -604,7 +607,7 @@ const republicPillars = [
     id: 'demokratik',
     title: 'Demokratik Devlet',
     icon: <Users className="w-12 h-12" />,
-    image: '/images/demokratik_devlet_yeni.png',
+    image: imgUrl('/images/demokratik_devlet_yeni.png'),
     summary: 'Egemenlik kayıtsız şartsız milletindir.',
     description: 'Vatandaşlar cumhurbaşkanını, milletvekillerini ve yerel yöneticilerini belirli aralıklarla seçerek egemenlik hakkını kullanır. Seçimlere her siyasi görüşü temsil eden partilerin yanında bağımsız adaylar da katılabilir. Hiç kimseye ayrıcalık tanınmaz.',
   },
@@ -612,7 +615,7 @@ const republicPillars = [
     id: 'laik',
     title: 'Laik Devlet',
     icon: <Sparkles className="w-12 h-12" />,
-    image: '/images/laik_devlet_yeni.png',
+    image: imgUrl('/images/laik_devlet_yeni.png'),
     summary: 'Din ve vicdan hürriyetinin teminatı.',
     description: 'Devlet bütün inançlar karşısında tarafsızdır. Hangi inanca sahip olursa olsun bütün vatandaşların vicdan, dini inanç ve kanaat hürriyeti bulunmaktadır. Hukuk kuralları dini kurallara dayandırılamaz.',
     question: 'Sizce demokratik bir yönetim için laiklik ilkesinin önemi nedir?',
@@ -622,7 +625,7 @@ const republicPillars = [
     id: 'sosyal',
     title: 'Sosyal Devlet',
     icon: <Landmark className="w-12 h-12" />,
-    image: '/images/sosyal_devlet_yeni.png',
+    image: imgUrl('/images/sosyal_devlet_yeni.png'),
     summary: 'İnsana onurlu bir hayat sağlama güvencesi.',
     description: 'Devlet, her vatandaşın onurlu bir hayat sürmesi için çalışır. Sosyal güvenlik hakkı sunar; yaşlıları, özel gereksinimli bireyleri ve korunmaya muhtaç çocukları topluma kazandırmak için her türlü tedbiri alır.',
   },
@@ -630,7 +633,7 @@ const republicPillars = [
     id: 'hukuk',
     title: 'Hukuk Devleti',
     icon: <Scale className="w-12 h-12" />,
-    image: '/images/hukuk_devleti_yeni.png',
+    image: imgUrl('/images/hukuk_devleti_yeni.png'),
     summary: 'Hukukun üstünlüğü ve adalet terazisi.',
     description: 'Hukuk kuralları herkes için bağlayıcıdır. Kişi veya kurumlarca haksızlığa uğradığını düşünen vatandaş, bağımsız mahkemelerde hakkını arayabilir. Yargı kararları adil, tarafsız ve herkes için bağlayıcıdır.',
     question: 'Sizce yargı kararları neden herkes için bağlayıcıdır?',
@@ -1005,7 +1008,7 @@ function TopNavbar() {
         
         <a href="#exit-ticket" className={`transition-all text-[10px] sm:text-xs font-bold tracking-widest uppercase border px-2 sm:px-3 py-1 rounded-full whitespace-nowrap ${activeSection === 'exit-ticket' ? 'text-white bg-amber-500 border-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.6)] scale-105' : 'text-amber-400 border-amber-500/50 bg-amber-500/10 hover:text-white'} `}>Çıkış Bileti</a>
 
-        <a href="/docs/Demokrasi_ve_Vatandaslik.pdf" target="_blank" rel="noreferrer" title="MEB Demokrasi ve Vatandaşlık Ders Özeti PDF Kılavuzu" className="text-emerald-400 hover:text-white transition-colors text-[10px] sm:text-xs font-bold tracking-widest uppercase border border-emerald-500/50 px-2 sm:px-3 py-1 rounded-full bg-emerald-500/10 flex items-center gap-1.5 group whitespace-nowrap">
+        <a href={imgUrl('/docs/Demokrasi_ve_Vatandaslik.pdf')} target="_blank" rel="noreferrer" title="MEB Demokrasi ve Vatandaşlık Ders Özeti PDF Kılavuzu" className="text-emerald-400 hover:text-white transition-colors text-[10px] sm:text-xs font-bold tracking-widest uppercase border border-emerald-500/50 px-2 sm:px-3 py-1 rounded-full bg-emerald-500/10 flex items-center gap-1.5 group whitespace-nowrap">
           <Download className="w-3 h-3 group-hover:scale-110 transition-transform" /> 
           <span className="hidden sm:inline-block">PDF Özet</span>
           <span className="sm:hidden">Özet</span>
